@@ -1,0 +1,15 @@
+<html xmlns:th="https://www.thymeleaf.org">
+
+<body>
+
+<h2>User</h2>
+<h1 th:text="${user.pseudo}"></h1>
+
+<form th:object="${user}" method="post" th:action="@{/validFormModif}">
+
+    <p>Pseudo: <input type="text" th:field="*{pseudo}" /></p>
+    <p>Password: <input type="text" th:field="*{password}" /></p>
+    <input type="submit" value="Modifier" />
+</form>
+</body>
+</html>
