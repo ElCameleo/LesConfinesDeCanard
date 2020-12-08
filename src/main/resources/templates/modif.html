@@ -24,6 +24,9 @@
             border-radius: 10px;
             text-align: center;
         }
+        td{
+            text-align: center;
+        }
         tr {
             border-top: none !important;
         }
@@ -59,14 +62,14 @@
         <table>
             <tr>
                 <td>Nom Utilisateur :</td>
-                <td> <input type="text" th:field="*{pseudo}" /></td>
+                <td> <input class="w-100" type="text" th:field="*{pseudo}" /></td>
             </tr>
             <tr>
                 <td>Nouveau mot de passe :  </td>
-                <td><input type="password" th:field="*{password}" /></td>
+                <td><input class="w-100" type="password" th:field="*{password}" /></td>
             </tr>
         </table>
-        <input class="btn btn-outline-dark" type="submit" value="Modifier" />
+        <input style="padding: 5px;" class="btn btn-outline-dark" type="submit" value="Modifier" />
     </form>
     </div>
 </div>
