@@ -1,33 +1,30 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Ajouter recette</title>
+    <title>Modifier Utilisateur</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>li {padding: 5px ;}
-    #ex{
-        padding: 5px
-    }
-    #page{
-        background-color:#fff;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 10px;
-        border-radius: 10px;
-    }
-    textarea {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        width: 100%;}
+    <style>
+        li {padding: 5px ;}
+        button {text-align: center;}
+        input {width : 40% }
+        #ex{
+            padding: 5px
+        }
+        #page{
+            background-color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
     </style>
-
-</head>
 
 <body style="background-color:#FFF5F2">
 
@@ -43,37 +40,24 @@
             <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" th:href="@{/profil}" ><span style="text-align: center" th:utext="${user.pseudo}"></span></a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" th:href="@{/profil}">Mes recettes</a>
+                <a class="dropdown-item" th:href="@{/create_recette}">Ajouter une recette</a>
                 <a class="dropdown-item" th:href="@{/favorite}">Recettes favorites</a>
-                <a class="dropdown-item" th:href="@{/modif}">Modifier utilisateur</a>
                 <a class="dropdown-item" th:href="@{/connexion}">Se déconnecter</a>
             </div>
         </li>
     </ul>
 </nav>
 
+
 <div id="ex">
-    <div id="page" class="container" >
-        <form action="#" th:action="@{/store_recette}" th:object="${recette}" method="post">
-            <div style="text-align: center">
-                <span> Titre de la recette : </span>
-                <input th:field="*{title}"/>
-            </div>
-            <div style="padding: 5px">
-                <span> Description de la recette : </span>
-                <textarea rows="20" th:field="*{content}"> </textarea>
-            </div>
-            <div style="text-align: right">
-                <input class="btn btn-outline-dark" type="submit" value = "Ajoutez cette recette"/>
-            </div>
-        </form>
-        <div th:block th:each="error : ${errors}">
-            <div class="alert alert-danger" role="alert">
-                <span th:text="${error}"></span>
-            </div>
-        </div>
+    <div id="page">
+    <form th:object="${user}" method="post" th:action="@{/validFormModif}">
+        <p>Nom d'utilisateur: <input type="text" th:field="*{pseudo}" /></p>
+        <p>Nouveau mot de passe: <input type="password" th:field="*{password}" /></p>
+        <input class="btn btn-outline-dark" type="submit" value="Modifier" />
+    </form>
     </div>
 </div>
 
 </body>
 </html>
-

@@ -86,8 +86,18 @@ public class UserController {
         model.addAttribute ("user", session.getAttribute("user"));
         User currentUser = (User) session.getAttribute("user");
         map.addAttribute("myRecipies", recipeRepository.findAllByUserId(currentUser.getId()));
-        map.addAttribute("recipiesLiked", likesRepository.findByUser_id(currentUser.getId()));
         return "profil.html";
+    }
+
+    @GetMapping ("/favorite")
+    public String GetFav (Model model, HttpSession session, ModelMap map) {
+        if(session.getAttribute("user") == null){
+            return("redirect:connexion");
+        }
+        model.addAttribute ("user", session.getAttribute("user"));
+        User currentUser = (User) session.getAttribute("user");
+        map.addAttribute("recipiesLiked", likesRepository.findByUser_id(currentUser.getId()));
+        return "favorite.html";
     }
 
     public String getMd5(String password) throws NoSuchAlgorithmException{
@@ -97,6 +107,26 @@ public class UserController {
         String hash = DatatypeConverter.printHexBinary(digest).toUpperCase();
         return hash;
     }
+
+    @GetMapping("/modif")
+    public String initUpdateUserForm(Model model, HttpSession session) {
+        if(session.getAttribute("user") == null){
+            return("redirect:connexion");
+        }
+        model.addAttribute ("user", session.getAttribute("user"));
+        User currentUser = (User) session.getAttribute("user");
+        return "modif.html";
+    }
+
+    @PostMapping("/validFormModif")
+    public String validUpdateUserForm(@ModelAttribute User user, HttpSession session) throws NoSuchAlgorithmException {
+        User mYuser = (User) session.getAttribute("user");
+        mYuser.setPassword(getMd5(user.getPassword()));
+        mYuser.setPseudo(user.getPseudo());
+        userRepository.save(mYuser);
+        return "redirect:/profil";
+    }
+
 
 
 

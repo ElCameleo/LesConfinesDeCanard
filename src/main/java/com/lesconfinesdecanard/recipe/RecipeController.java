@@ -27,6 +27,8 @@ public class RecipeController {
         if(session.getAttribute("user") == null){
             return("redirect:connexion");
         }
+        model.addAttribute ("user", session.getAttribute("user"));
+        User currentUser = (User) session.getAttribute("user");
         model.addAttribute("errors", session.getAttribute("errors"));
         session.removeAttribute("errors");
         Recipe recette = new Recipe();

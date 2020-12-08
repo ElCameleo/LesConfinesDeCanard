@@ -4,12 +4,17 @@
     <title>Connexion</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <style>
         .id{
+            background-color: white;
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
+            padding: 10px;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -29,13 +34,13 @@
 </nav>
 
 
-<div class="id">
+<div class="id" >
     <div id="ins"  style="display:block">
         <h1 style="text-align: center">Inscription</h1>
         <form action="#" th:action="@{/register}" th:object="${user}" method="post">
             <p>Nom Utilisateur : <input type="text" th:field="*{pseudo}" /></p>
             <p>Mot de passe :    <input type="password" th:field="*{password}" /></p>
-            <p style="text-align: center"><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            <p style="text-align: center"><input class="btn btn-outline-dark" type="submit" value="S'inscrire" /> <input class="btn btn-outline-dark" type="reset" value="Annuler" /></p>
         </form>
     </div>
     <div  id="con"  style="display:none">
@@ -43,7 +48,7 @@
         <form action="#" th:action="@{/connexion}" th:object="${user}" method="post">
             <p>Nom Utilisateur : <input type="text" th:field="*{pseudo}" /></p>
             <p>Mot de passe :    <input type="password" th:field="*{password}" /></p>
-            <p style="text-align: center"><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            <p style="text-align: center"><input class="btn btn-outline-dark" type="submit" value="Se connecter" /> <input class="btn btn-outline-dark" type="reset" value="Annuler" /></p>
         </form>
     </div>
     <div th:block th:each="error : ${errors}">
@@ -55,9 +60,6 @@
     </div>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <script>
 
     function conToIns() {
@@ -73,5 +75,6 @@
         document.getElementById('ins2').style.display='none' ;
     }
 </script>
+
 </body>
 </html>
