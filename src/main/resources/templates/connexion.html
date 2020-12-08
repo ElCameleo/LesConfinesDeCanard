@@ -16,6 +16,14 @@
             padding: 10px;
             border-radius: 10px;
         }
+        tr {
+            border-top: none !important;
+        }
+        .button0{
+            text-align: center;
+            padding: 5px;
+        }
+
     </style>
 </head>
 
@@ -38,17 +46,35 @@
     <div id="ins"  style="display:block">
         <h1 style="text-align: center">Inscription</h1>
         <form action="#" th:action="@{/register}" th:object="${user}" method="post">
-            <p>Nom Utilisateur : <input type="text" th:field="*{pseudo}" /></p>
-            <p>Mot de passe :    <input type="password" th:field="*{password}" /></p>
-            <p style="text-align: center"><input class="btn btn-outline-dark" type="submit" value="S'inscrire" /> <input class="btn btn-outline-dark" type="reset" value="Annuler" /></p>
+            <table>
+                <tr>
+                    <td>Nom Utilisateur :</td>
+                    <td> <input type="text" th:field="*{pseudo}" /></td>
+                </tr>
+                <tr>
+                    <td>Mot de passe :  </td>
+                    <td><input type="password" th:field="*{password}" /></td>
+                </tr>
+            </table>
+            <p class="button0">
+                <input class="btn btn-outline-dark" type="submit" value="S'inscrire" /> <input class="btn btn-outline-dark" type="reset" value="Annuler" />
+            </p>
         </form>
     </div>
     <div  id="con"  style="display:none">
         <h1 style="text-align: center">Connexion</h1>
         <form action="#" th:action="@{/connexion}" th:object="${user}" method="post">
-            <p>Nom Utilisateur : <input type="text" th:field="*{pseudo}" /></p>
-            <p>Mot de passe :    <input type="password" th:field="*{password}" /></p>
-            <p style="text-align: center"><input class="btn btn-outline-dark" type="submit" value="Se connecter" /> <input class="btn btn-outline-dark" type="reset" value="Annuler" /></p>
+            <table>
+                <tr>
+                    <td>Nom Utilisateur :</td>
+                    <td> <input type="text" th:field="*{pseudo}" /></td>
+                </tr>
+                <tr>
+                    <td>Mot de passe :  </td>
+                    <td><input type="password" th:field="*{password}" /></td>
+                </tr>
+            </table>
+            <p class="button0"><input class="btn btn-outline-dark" type="submit" value="Se connecter" /> <input class="btn btn-outline-dark" type="reset" value="Annuler" /></p>
         </form>
     </div>
     <div th:block th:each="error : ${errors}">
