@@ -52,8 +52,8 @@
 <div id="ex">
     <div id="page">
     <form th:object="${user}" method="post" th:action="@{/validFormModif}">
-        <p>Nom d'utilisateur: <input type="text" th:field="*{pseudo}" /></p>
-        <p>Nouveau mot de passe: <input type="password" th:field="*{password}" /></p>
+        <p>Nom d'utilisateur :     <input type="text" th:field="*{pseudo}" /></p>
+        <p>Nouveau mot de passe : <input type="password" th:field="*{password}"/></p>
         <input class="btn btn-outline-dark" type="submit" value="Modifier" />
     </form>
     </div>
